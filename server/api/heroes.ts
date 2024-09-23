@@ -68,7 +68,7 @@ export default defineEventHandler(async (event) => {
         attackType: hero.attack_type,
         roles: hero.roles,
         img: `${HERO_IMAGE_BASE_URL}${heroName.toLowerCase().replace('-', '').replace(' ', '_')}.png`,
-        icon: `${HERO_IMAGE_BASE_URL}${heroName.toLowerCase().replace('-', '').replace(' ', '_')}_icon.png` // Assuming a similar pattern for icons
+        icon: `${HERO_IMAGE_BASE_URL}${heroName.toLowerCase().replace('-', '').replace(' ', '_')}.png`
       }
     })
     

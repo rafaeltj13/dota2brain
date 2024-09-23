@@ -17,7 +17,7 @@ console.log({ heroes: heroes.value, error });
 <template>
   <div class="bg-background pt-40 max-w-screen-xl mx-auto">
     <h1 class="text-5xl font-bold pb-8">Heroes</h1>
-    <div class="gap-6 grid grid-cols-3">
+    <div class="gap-6 grid grid-cols-4">
       <HeroCard
         v-for="hero in heroes"
         :key="hero.id"
