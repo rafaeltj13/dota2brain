@@ -5,19 +5,19 @@
       Trending
     </h1>
     <div class="flex justify-between items-center gap-8">
-      <HeroCard
+      <HeroCardIdea
         hero-name="alchemist"
         hero-attribute="strength"
         :badges="['Carry', 'Disabler', 'Nuker']"
         :upvotes="100"
       />
-      <HeroCard
+      <HeroCardIdea
         hero-name="antimage"
         hero-attribute="agility"
         :badges="['Carry', 'Escape', 'Nuker']"
         :upvotes="82"
       />
-      <HeroCard
+      <HeroCardIdea
         hero-name="dark_seer"
         hero-attribute="universal"
         :badges="['Disabler', 'Escape', 'Nuker']"

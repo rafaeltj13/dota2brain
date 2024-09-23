@@ -24,7 +24,10 @@ onUnmounted(() => {
         isScrollAtTop,
     }"
   >
-    <div class="flex items-center gap-2 w-48">
+    <div
+      class="flex items-center gap-2 w-48 cursor-pointer"
+      @click="navigateTo('/')"
+    >
       <img src="/logo.svg" alt="logo" class="w-10 h-10" />
       <p class="text-xl font-bold">
         Dota 2 <span class="text-primary">Brain</span>
