@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import type { ProcessedHero } from "../../server/api/heroes";
+import type { ProcessedHero } from "~/server/utils";
 
-const { data, error } = useFetch("/api/heroes");
+const { data, error } = useFetch("/api/hero/list");
+
+console.log({ data, error });
 
 const heroes = computed((): ProcessedHero[] => {
   const value = data.value;
@@ -10,8 +12,6 @@ const heroes = computed((): ProcessedHero[] => {
   }
   return [];
 });
-
-console.log({ heroes: heroes.value, error });
 </script>
 
 <template>
@@ -22,6 +22,7 @@ console.log({ heroes: heroes.value, error });
         v-for="hero in heroes"
         :key="hero.id"
         class="grid-span-2"
+        :hero-id="hero.id"
         :hero-name="hero.name"
         :hero-attribute="hero.primaryAttr"
         :badges="hero.roles"

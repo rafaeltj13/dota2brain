@@ -16,12 +16,16 @@ defineProps({
     type: String,
     required: true,
   },
+  heroId: {
+    type: Number,
+    required: true,
+  },
 });
 </script>
 
 <template>
   <div
-    @click="navigateTo(`/hero/${heroName}`)"
+    @click="navigateTo(`/hero/${heroId}`)"
     class="bg-background border-border border rounded-xl w-full hover:scale-110 transition-all duration-150 hover:cursor-pointer"
   >
     <HeroImage :hero-name="heroName" :hero-image-url="heroImageUrl" />
