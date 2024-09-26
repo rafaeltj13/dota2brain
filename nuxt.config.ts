@@ -2,9 +2,31 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/fonts', '@nuxt/icon'],
+  app: {
+    pageTransition: { name: "page", mode: "out-in" },
+  },
+  modules: [
+    '@nuxtjs/tailwindcss',
+    'shadcn-nuxt',
+    '@nuxt/fonts',
+    '@nuxt/icon',
+    '@nuxtjs/supabase'
+  ],
   shadcn: {
     prefix: '',
     componentDir: './components/ui'
-  }
+  },
+  runtimeConfig: {
+    public: {
+      SUPABASE_URL: process.env.SUPABASE_URL,
+      SUPABASE_KEY: process.env.SUPABASE_KEY,
+    },
+  },
+  supabase: {
+    redirectOptions: {
+      login: "/",
+      callback: "/",
+      exclude: ["/*"],
+    },
+  },
 })

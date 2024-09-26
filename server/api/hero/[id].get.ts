@@ -1,6 +1,5 @@
 import { HERO_IMAGE_BASE_URL, heroImageMap, OPENDOTA_API_URL, OpenDotaHero, ProcessedHero } from "~/server/utils";
 
-
 export default defineEventHandler(async (event) => {
   try {
     const heroId = getRouterParam(event, 'id')

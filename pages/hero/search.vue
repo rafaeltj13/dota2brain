@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import type { ProcessedHero } from "~/server/utils";
+import type { Database } from "~/database.types";
 
 const { data, error } = useFetch("/api/hero/list");
 
-console.log({ data, error });
-
-const heroes = computed((): ProcessedHero[] => {
+const heroes = computed((): Database["public"]["Tables"]["heroes"]["Row"][] => {
   const value = data.value;
   if (value && Array.isArray(value.data)) {
-    return value.data as ProcessedHero[];
+    return value.data as Database["public"]["Tables"]["heroes"]["Row"][];
   }
   return [];
 });
@@ -23,10 +21,10 @@ const heroes = computed((): ProcessedHero[] => {
         :key="hero.id"
         class="grid-span-2"
         :hero-id="hero.id"
-        :hero-name="hero.name"
-        :hero-attribute="hero.primaryAttr"
-        :badges="hero.roles"
-        :hero-image-url="hero.img"
+        :hero-name="hero.name ?? ''"
+        :hero-attribute="hero.primaryAttr ?? ''"
+        :badges="(hero.roles ?? '').split(',')"
+        :hero-image-url="hero.img ?? ''"
       />
     </div>
   </div>
