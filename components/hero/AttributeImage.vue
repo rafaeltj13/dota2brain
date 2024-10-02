@@ -23,7 +23,7 @@ const heroAttribute = computed(() => {
 <template>
   <img
     :src="`https://cdn.akamai.steamstatic.com/apps/dota2/images/dota_react/icons/hero_${heroAttribute.toLowerCase()}.png`"
-    class="w-6 h-6 inline-block mr-1"
+    class="w-8 h-8 inline-block mr-1"
     :alt="heroAttribute"
   />
 </template>

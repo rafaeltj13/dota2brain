@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-4 max-w-screen-xl py-40 mx-auto">
+  <div class="flex flex-col gap-4 max-w-screen-2xl py-40 mx-auto">
     <h1 class="text-5xl font-bold flex items-center gap-2 text-primary pb-4">
       <Icon name="ic:baseline-trending-up" class="w-10 h-10" />
       Trending

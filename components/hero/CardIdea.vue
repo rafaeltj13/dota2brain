@@ -24,7 +24,7 @@ defineProps({
     @click="navigateTo(`/idea/${heroName}`)"
     class="bg-background border-border border rounded-xl w-full hover:scale-110 transition-all duration-300 hover:cursor-pointer"
   >
-    <HeroImage :hero-name="heroName" />
+    <HeroAttributeImage :hero-name="heroName" />
     <div class="flex justify-between w-full h-full p-4">
       <div class="gap-3 flex flex-col rounded-b-xl">
         <h1 class="text-2xl font-bold">
@@ -33,7 +33,7 @@ defineProps({
         </h1>
         <HeroBadges :badges="badges" />
       </div>
-      <HeroUpvotes :upvotes="upvotes" />
+      <IdeaUpvotes :upvotes="upvotes" />
     </div>
   </div>
 </template>

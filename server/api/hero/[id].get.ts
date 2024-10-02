@@ -19,8 +19,6 @@ export default defineEventHandler(async (event) => {
       throw error
     }
     
-    console.log({ hero })
-
     return { data: { ...hero } as Database['public']['Tables']['heroes']['Row'], error: null }
   } catch (error) {
     console.error('Error fetching hero data:', error)

@@ -4,7 +4,7 @@
     class="w-full h-[60rem] bg-cover bg-center"
   >
     <div
-      class="max-w-screen-xl h-full mx-auto text-center flex flex-col items-center justify-center"
+      class="max-w-screen-2xl h-full mx-auto text-center flex flex-col items-center justify-center"
     >
       <h2 class="text-3xl font-bold pb-4">
         It's impossible to know everything about this game
