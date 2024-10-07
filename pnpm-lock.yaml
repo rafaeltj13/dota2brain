@@ -54,6 +54,9 @@ importers:
         specifier: latest
         version: 4.4.4(vue@3.5.4(typescript@5.6.2))
     devDependencies:
+      '@iconify-json/ic':
+        specifier: ^1.2.0
+        version: 1.2.0
       '@nuxtjs/tailwindcss':
         specifier: ^6.12.1
         version: 6.12.1(magicast@0.3.5)(rollup@4.21.3)
@@ -682,6 +685,9 @@ packages:
 
   '@floating-ui/vue@1.1.4':
     resolution: {integrity: sha512-ammH7T3vyCx7pmm9OF19Wc42zrGnUw0QvLoidgypWsCLJMtGXEwY7paYIHO+K+oLC3mbWpzIHzeTVienYenlNg==}
+
+  '@iconify-json/ic@1.2.0':
+    resolution: {integrity: sha512-L4+m77xTQB08X3I+3xs1+IrvK+aNcuN/7ODu5aUPznHKLU+/8UYcsjUgNHze6vPOGPQ0AG+kCwvy91EYPXSRxw==}
 
   '@iconify/collections@1.0.461':
     resolution: {integrity: sha512-1D6cTTL3c55SpiNFpsK8vwnSLY2ia9XbarnLeyE7L152dKRg+sofV2cRbEz6UmSZLQjsgUxe16yvNoyhhx21vg==}
@@ -4227,6 +4233,10 @@ snapshots:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
+
+  '@iconify-json/ic@1.2.0':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify/collections@1.0.461':
     dependencies:
