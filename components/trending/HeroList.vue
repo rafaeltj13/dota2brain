@@ -5,7 +5,7 @@
       Trending
     </h1>
     <div class="flex justify-between items-center gap-8">
-      <HeroCardIdea
+      <!-- <HeroCardIdea
         hero-name="alchemist"
         hero-attribute="strength"
         :badges="['Carry', 'Disabler', 'Nuker']"
@@ -22,7 +22,7 @@
         hero-attribute="universal"
         :badges="['Disabler', 'Escape', 'Nuker']"
         :upvotes="49"
-      />
+      /> -->
     </div>
   </div>
 </template>

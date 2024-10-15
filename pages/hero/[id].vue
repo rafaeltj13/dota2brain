@@ -5,6 +5,49 @@ const { id } = useRoute().params;
 
 const { data, error } = useFetch(`/api/hero/${id}`);
 
+const ideas = ref([
+  {
+    id: 1,
+    title: "PL RUSH AGHS",
+    tags: ["PL RUSH", "AGHS"],
+  },
+  {
+    id: 2,
+    title: "Farm farm farm",
+    tags: ["Farm"],
+  },
+  {
+    id: 3,
+    title: "Late game menace",
+    tags: ["Late game", "Menace"],
+  },
+  {
+    id: 4,
+    title: "Safe lane",
+    tags: ["Safe lane"],
+  },
+  {
+    id: 5,
+    title: "Mid lane bully",
+    tags: ["Mid lane", "Bully"],
+  },
+  {
+    id: 6,
+    title: "Active vs passive",
+    tags: ["Active vs passive"],
+  },
+  {
+    id: 7,
+    title: "Dispel",
+    tags: ["Dispel"],
+  },
+  {
+    id: 8,
+    title: "EZ Win",
+    tags: ["EZ Win"],
+  },
+]);
+
 const pageTitle = computed(() => `${hero.value.name} - Ideas`);
 const hero = computed(() => {
   const currentHero = data.value?.data as
@@ -46,45 +89,7 @@ useHead({
         >
       </div>
     </div>
-    <div class="col-span-1 gap-4 px-8 lg:px-0 grid grid-cols-3">
-      <IdeaItem
-        id="1"
-        title="PL RUSH AGHS asd asdasdadadasdd asdas"
-        :tags="['PL RUSH', 'AGHS']"
-      />
-      <IdeaItem id="2" title="Farm farm farm" :tags="['Farm']" />
-      <IdeaItem
-        id="3"
-        title="Late game menace"
-        :tags="['Late game', 'Menace']"
-      />
-      <IdeaItem id="4" title="Safe lane" :tags="['Safe lane']" />
-      <IdeaItem id="5" title="Mid lane bully" :tags="['Mid lane', 'Bully']" />
-      <IdeaItem
-        id="6"
-        title="Active vs passive"
-        :tags="['Active vs passive']"
-      />
-      <IdeaItem id="7" title="Dispel" :tags="['Dispel']" />
-      <IdeaItem id="8" title="EZ Win" :tags="['EZ Win']" />
-      <IdeaItem id="9" title="PL RUSH AGHS" :tags="['PL RUSH', 'AGHS']" />
-      <IdeaItem id="10" title="Farm farm farm" :tags="['Farm']" />
-      <IdeaItem
-        id="11"
-        title="Late game menace"
-        :tags="['Late game', 'Menace']"
-      />
-      <IdeaItem id="12" title="Safe lane" :tags="['Safe lane']" />
-      <IdeaItem id="13" title="Mid lane bully" :tags="['Mid lane', 'Bully']" />
-      <IdeaItem
-        id="14"
-        title="Active vs passive"
-        :tags="['Active vs passive']"
-      />
-      <IdeaItem id="15" title="Dispel" :tags="['Dispel']" />
-      <IdeaItem id="16" title="EZ Win" :tags="['EZ Win']" />
-      <IdeaItem id="17" title="EZ Win" :tags="['EZ Win']" />
-      <IdeaItem id="18" title="EZ Win" :tags="['EZ Win']" />
-    </div>
+    <IdeaList v-if="ideas.length > 0" :ideas="ideas" />
+    <IdeaEmpty v-else />
   </div>
 </template>

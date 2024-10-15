@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps({
   id: {
-    type: String,
+    type: [String, Number] as PropType<string | number>,
     required: true,
   },
   title: {
@@ -17,7 +17,7 @@ defineProps({
 
 <template>
   <div
-    class="border-2 rounded-xl px-4 py-6 hover:bg-primary transition-all hover:cursor-pointer flex items-center justify-between"
+    class="border-2 rounded-xl px-4 py-6 hover:bg-primary hover:-translate-y-2 transition-all hover:cursor-pointer flex items-center justify-between"
     @click="navigateTo(`/idea/${id}`)"
   >
     <div class="w-[80%]">

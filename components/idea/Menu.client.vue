@@ -31,11 +31,17 @@ defineProps({
       :key="idea.title"
       :value="idea.title"
     >
-      <p class="text-3xl">{{ idea.description }}</p>
-      <div class="flex gap-2 items-start pt-4">
-        <Badge v-for="badge in idea.badges" :key="badge" variant="secondary">{{
-          badge
-        }}</Badge>
+      <div class="flex flex-col gap-4 pt-8">
+        <p class="text-3xl font-bold pb-4">{{ idea.title }}</p>
+        <p class="text-xl">{{ idea.description }}</p>
+        <div class="flex gap-2 items-start pt-4">
+          <Badge
+            v-for="badge in idea.badges"
+            :key="badge"
+            variant="secondary"
+            >{{ badge }}</Badge
+          >
+        </div>
       </div>
     </TabsContent>
   </Tabs>
@@ -59,11 +65,16 @@ defineProps({
       :key="idea.title"
       :value="idea.title"
     >
-      <p class="text-3xl">{{ idea.description }}</p>
-      <div class="flex gap-2 items-start pt-4">
-        <Badge v-for="badge in idea.badges" :key="badge" variant="secondary">{{
-          badge
-        }}</Badge>
+      <div class="flex justify-between items-start pt-8">
+        <p class="text-3xl">{{ idea.description }}</p>
+        <div class="flex gap-2 items-start pt-4">
+          <Badge
+            v-for="badge in idea.badges"
+            :key="badge"
+            variant="secondary"
+            >{{ badge }}</Badge
+          >
+        </div>
       </div>
     </TabsContent>
   </Tabs>
