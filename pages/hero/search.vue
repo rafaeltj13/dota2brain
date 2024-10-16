@@ -15,7 +15,7 @@ const heroes = computed((): Database["public"]["Tables"]["heroes"]["Row"][] => {
 <template>
   <div class="bg-background pt-40 max-w-screen-2xl mx-auto">
     <h1 class="text-5xl font-bold pb-8">Heroes</h1>
-    <div class="gap-6 grid grid-cols-4">
+    <div class="gap-8 grid grid-cols-5">
       <HeroCard
         v-for="hero in heroes"
         :key="hero.id"

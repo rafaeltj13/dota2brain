@@ -15,6 +15,6 @@ defineProps({
   <img
     :src="heroImageUrl"
     :alt="heroName"
-    class="w-full h-40 object-cover rounded-t-xl"
+    class="w-full h-60 object-cover rounded-xl"
   />
 </template>

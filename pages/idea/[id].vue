@@ -5,49 +5,6 @@ const { id } = useRoute().params;
 
 const { data, error } = useFetch(`/api/hero/${id}`);
 
-const otherIdeas = ref([
-  {
-    id: 1,
-    title: "PL RUSH AGHS",
-    tags: ["PL RUSH", "AGHS"],
-  },
-  {
-    id: 2,
-    title: "Farm farm farm",
-    tags: ["Farm"],
-  },
-  {
-    id: 3,
-    title: "Late game menace",
-    tags: ["Late game", "Menace"],
-  },
-  {
-    id: 4,
-    title: "Safe lane",
-    tags: ["Safe lane"],
-  },
-  {
-    id: 5,
-    title: "Mid lane bully",
-    tags: ["Mid lane", "Bully"],
-  },
-  {
-    id: 6,
-    title: "Active vs passive",
-    tags: ["Active vs passive"],
-  },
-  {
-    id: 7,
-    title: "Dispel",
-    tags: ["Dispel"],
-  },
-  {
-    id: 8,
-    title: "EZ Win",
-    tags: ["EZ Win"],
-  },
-]);
-
 const hero = computed(() => {
   const currentHero = data.value?.data as
     | Database["public"]["Tables"]["heroes"]["Row"]
@@ -59,6 +16,57 @@ const hero = computed(() => {
   };
 });
 const pageTitle = computed(() => `${hero.value.name} - Ideas`);
+
+const otherIdeas = computed(() => [
+  {
+    id: 1,
+    title: "PL RUSH AGHS",
+    tags: ["PL RUSH", "AGHS"],
+    img: hero.value.img ?? "",
+  },
+  {
+    id: 2,
+    title: "Farm farm farm",
+    tags: ["Farm"],
+    img: hero.value.img ?? "",
+  },
+  {
+    id: 3,
+    title: "Late game menace",
+    tags: ["Late game", "Menace"],
+    img: hero.value.img ?? "",
+  },
+  {
+    id: 4,
+    title: "Safe lane",
+    tags: ["Safe lane"],
+    img: hero.value.img ?? "",
+  },
+  {
+    id: 5,
+    title: "Mid lane bully",
+    tags: ["Mid lane", "Bully"],
+    img: hero.value.img ?? "",
+  },
+  {
+    id: 6,
+    title: "Active vs passive",
+    tags: ["Active vs passive"],
+    img: hero.value.img ?? "",
+  },
+  {
+    id: 7,
+    title: "Dispel",
+    tags: ["Dispel"],
+    img: hero.value.img ?? "",
+  },
+  {
+    id: 8,
+    title: "EZ Win",
+    tags: ["EZ Win"],
+    img: hero.value.img ?? "",
+  },
+]);
 
 useHead({
   title: pageTitle || "Ideas",

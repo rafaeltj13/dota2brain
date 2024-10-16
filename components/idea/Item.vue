@@ -12,26 +12,41 @@ defineProps({
     type: Array as PropType<string[]>,
     required: true,
   },
+  img: {
+    type: String,
+    required: true,
+  },
 });
 </script>
 
 <template>
-  <div
-    class="border-2 rounded-xl px-4 py-6 hover:bg-primary hover:-translate-y-2 transition-all hover:cursor-pointer flex items-center justify-between"
-    @click="navigateTo(`/idea/${id}`)"
-  >
-    <div class="w-[80%]">
-      <h1 class="text-2xl font-bold truncate w-full" :title="title">
-        {{ title }}
-      </h1>
-      <div class="flex gap-2 pt-4">
-        <Badge v-for="tag in tags" :key="tag" variant="secondary">{{
-          tag
-        }}</Badge>
+  <ClientOnly>
+    <div
+      class="rounded-xl hover:bg-primary hover:-translate-y-2 transition-all hover:cursor-pointer flex items-center justify-between pr-2"
+      @click="navigateTo(`/idea/${id}`)"
+    >
+      <img
+        :src="img ?? ''"
+        :alt="title ?? ''"
+        class="w-24 h-24 object-cover lg:rounded-xl mr-4"
+      />
+      <div class="w-[80%]">
+        <h1 class="text-2xl font-bold truncate w-full" :title="title">
+          {{ title }}
+        </h1>
+        <div class="flex gap-2 pt-4">
+          <Badge
+            v-for="tag in tags"
+            :key="tag"
+            variant="default"
+            class="shadow-md"
+            >{{ tag }}</Badge
+          >
+        </div>
+      </div>
+      <div class="flex items-center justify-center">
+        <IdeaUpvotes size="md" :upvotes="11" />
       </div>
     </div>
-    <div class="flex items-center justify-center">
-      <IdeaUpvotes size="md" :upvotes="11" />
-    </div>
-  </div>
+  </ClientOnly>
 </template>
