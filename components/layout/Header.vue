@@ -25,7 +25,7 @@ onUnmounted(() => {
     }"
   >
     <div
-      class="flex items-center gap-2 w-52 cursor-pointer"
+      class="flex items-center gap-2 w-60 cursor-pointer hover:scale-110 transition-all duration-150"
       @click="navigateTo('/')"
     >
       <img src="/logo.svg" alt="logo" class="w-10 h-10" />
@@ -46,10 +46,22 @@ onUnmounted(() => {
         <Icon name="ic:baseline-search" class="" />
       </span>
     </div>
-    <div class="flex items-center justify-end gap-4 w-52">
-      <p class="text-sm font-bold">Ideas</p>
-      <p class="text-sm font-bold">Heroes</p>
-      <p class="text-sm font-bold">About</p>
+    <div class="flex items-center justify-end gap-4 w-60">
+      <LayoutLink
+        class="hover:text-primary hover:-translate-y-1 transition-all"
+        href="/idea/search"
+        >Ideas</LayoutLink
+      >
+      <LayoutLink
+        class="hover:text-primary hover:-translate-y-1 transition-all"
+        href="/hero/search"
+        >Heroes</LayoutLink
+      >
+      <LayoutLink
+        class="hover:text-primary hover:-translate-y-1 transition-all"
+        href="/about"
+        >About</LayoutLink
+      >
       <Icon name="ic:baseline-account-circle" class="w-6 h-6" />
     </div>
   </div>

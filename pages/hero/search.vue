@@ -10,12 +10,16 @@ const heroes = computed((): Database["public"]["Tables"]["heroes"]["Row"][] => {
   }
   return [];
 });
+
+useHead({
+  title: "Heroes",
+});
 </script>
 
 <template>
-  <div class="bg-background pt-40 max-w-screen-2xl mx-auto">
-    <h1 class="text-5xl font-bold pb-8">Heroes</h1>
-    <div class="gap-8 grid grid-cols-5">
+  <div class="bg-background pt-32 max-w-screen-2xl mx-auto">
+    <h1 class="text-5xl font-bold pb-8" v-motion-fade>Heroes</h1>
+    <div class="gap-8 grid grid-cols-5" v-motion-slide-bottom>
       <HeroCard
         v-for="hero in heroes"
         :key="hero.id"

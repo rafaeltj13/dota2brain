@@ -12,8 +12,10 @@ const hero = computed(() => {
     | null;
 
   return {
-    ...currentHero,
     name: currentHero?.name || "Unknown Hero",
+    img: currentHero?.img || "",
+    primaryAttr: currentHero?.primaryAttr || "",
+    roles: currentHero?.roles || "",
   };
 });
 
@@ -76,18 +78,11 @@ useHead({
 <template>
   <div
     v-if="hero"
-    class="bg-background max-w-screen-2xl mx-auto grid gap-8 lg:pt-20 -pt-40 pb-20"
+    class="bg-background max-w-screen-2xl mx-auto grid gap-8 pt-32 pb-20"
+    v-motion-slide-bottom
   >
-    <img
-      :src="hero.img ?? ''"
-      :alt="hero.name ?? ''"
-      class="w-full h-80 object-cover lg:rounded-xl mx-auto"
-    />
     <div class="col-span-1 gap-6">
-      <h1 class="text-5xl font-bold pb-4">
-        <HeroAttributeImage :hero-attribute="hero.primaryAttr ?? ''" />
-        {{ hero?.name ?? "" }}
-      </h1>
+      <HeroHeader :hero="hero" />
       <div class="flex gap-2">
         <Badge
           v-for="role in hero.roles?.split(',') || []"

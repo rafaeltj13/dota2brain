@@ -28,7 +28,7 @@ defineProps({
       <img
         :src="img ?? ''"
         :alt="title ?? ''"
-        class="w-24 h-24 object-cover lg:rounded-xl mr-4"
+        class="aspect-video w-40 object-fill lg:rounded-xl mr-4"
       />
       <div class="w-[80%]">
         <h1 class="text-2xl font-bold truncate w-full" :title="title">

@@ -13,6 +13,9 @@ const hero = computed(() => {
   return {
     ...currentHero,
     name: currentHero?.name || "",
+    img: currentHero?.img || "",
+    primaryAttr: currentHero?.primaryAttr || "",
+    roles: currentHero?.roles || "",
   };
 });
 const pageTitle = computed(() => `${hero.value.name} - Ideas`);
@@ -83,7 +86,7 @@ const currentIdea = computed(() => {
       {
         title: "Early Game 0-10 min",
         badges: ["PL RUSH", "AGHS"],
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore morem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore morem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore morem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore morem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore morem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
       },
       {
         title: "MidGame10-25minMidGame10-25minMidGame10-25minM",
@@ -103,20 +106,15 @@ const currentIdea = computed(() => {
 </script>
 
 <template>
-  <div v-if="!hero?.name" class="pt-32 max-w-screen-2xl mx-auto">
-    <p class="text-center text-2xl">Loading...</p>
+  <div
+    v-if="!hero?.name"
+    class="pt-32 max-w-screen-2xl mx-auto w-full flex items-center justify-center"
+  >
+    <LayoutLoading />
   </div>
-  <div v-else>
-    <div class="bg-background max-w-screen-2xl mx-auto gap-8 pt-20 pb-20">
-      <h1 class="text-5xl font-bold flex items-center gap-4 pb-4">
-        <!-- TODO: Change to hero icon in minimap -->
-        <img
-          :src="hero.img ?? ''"
-          :alt="hero.name ?? ''"
-          class="w-10 h-10 object-cover lg:rounded-xl"
-        />{{ hero?.name ?? "" }}
-        <HeroAttributeImage :hero-attribute="hero.primaryAttr ?? ''" />
-      </h1>
+  <div v-else v-motion-slide-bottom>
+    <div class="bg-background max-w-screen-2xl mx-auto gap-8 pt-32 pb-20">
+      <HeroHeader :hero="hero" />
       <div class="flex gap-2 pb-12">
         <Badge
           v-for="role in hero.roles?.split(',') || []"
