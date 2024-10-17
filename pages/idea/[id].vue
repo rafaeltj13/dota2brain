@@ -3,21 +3,12 @@ import type { Database } from "~/database.types";
 
 const { id } = useRoute().params;
 
-const { data, error } = useFetch(`/api/hero/${id}`);
+const { data, error } = useFetch(`/api/idea/list`);
 
-const hero = computed(() => {
-  const currentHero = data.value?.data as
-    | Database["public"]["Tables"]["heroes"]["Row"]
-    | null;
+// const ideas = computed(() => {
+//   return data.value?.data as Database["public"]["Tables"]["ideas"]["Row"][];
+// });
 
-  return {
-    ...currentHero,
-    name: currentHero?.name || "",
-    img: currentHero?.img || "",
-    primaryAttr: currentHero?.primaryAttr || "",
-    roles: currentHero?.roles || "",
-  };
-});
 const pageTitle = computed(() => `${hero.value.name} - Ideas`);
 
 const otherIdeas = computed(() => [

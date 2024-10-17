@@ -1,19 +1,23 @@
 <script setup lang="ts">
 defineProps({
   id: {
-    type: [String, Number] as PropType<string | number>,
+    type: Number,
     required: true,
   },
   title: {
     type: String,
     required: true,
   },
-  tags: {
+  badges: {
     type: Array as PropType<string[]>,
     required: true,
   },
   img: {
     type: String,
+    required: true,
+  },
+  upvotes: {
+    type: Number,
     required: true,
   },
 });
@@ -36,7 +40,7 @@ defineProps({
         </h1>
         <div class="flex gap-2 pt-4">
           <Badge
-            v-for="tag in tags"
+            v-for="tag in badges"
             :key="tag"
             variant="default"
             class="shadow-md"
@@ -45,7 +49,7 @@ defineProps({
         </div>
       </div>
       <div class="flex items-center justify-center">
-        <IdeaUpvotes size="md" :upvotes="11" />
+        <IdeaUpvotes size="md" :upvotes="upvotes" />
       </div>
     </div>
   </ClientOnly>

@@ -13,7 +13,6 @@ export type Database = {
         Row: {
           attackType: string | null
           created_at: string
-          icon: string | null
           id: number
           img: string | null
           name: string | null
@@ -23,7 +22,6 @@ export type Database = {
         Insert: {
           attackType?: string | null
           created_at?: string
-          icon?: string | null
           id?: number
           img?: string | null
           name?: string | null
@@ -33,12 +31,123 @@ export type Database = {
         Update: {
           attackType?: string | null
           created_at?: string
-          icon?: string | null
           id?: number
           img?: string | null
           name?: string | null
           primaryAttr?: string | null
           roles?: string | null
+        }
+        Relationships: []
+      }
+      ideas: {
+        Row: {
+          created_at: string
+          fifthSection: number | null
+          firstSection: number | null
+          fourthSection: number | null
+          hero: number | null
+          id: number
+          secondSection: number | null
+          thirdSection: number | null
+          title: string | null
+          upvotes: number | null
+        }
+        Insert: {
+          created_at?: string
+          fifthSection?: number | null
+          firstSection?: number | null
+          fourthSection?: number | null
+          hero?: number | null
+          id?: number
+          secondSection?: number | null
+          thirdSection?: number | null
+          title?: string | null
+          upvotes?: number | null
+        }
+        Update: {
+          created_at?: string
+          fifthSection?: number | null
+          firstSection?: number | null
+          fourthSection?: number | null
+          hero?: number | null
+          id?: number
+          secondSection?: number | null
+          thirdSection?: number | null
+          title?: string | null
+          upvotes?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ideas_fifthSection_fkey"
+            columns: ["fifthSection"]
+            isOneToOne: false
+            referencedRelation: "ideaSection"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ideas_firstSection_fkey"
+            columns: ["firstSection"]
+            isOneToOne: false
+            referencedRelation: "ideaSection"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ideas_fourthSection_fkey"
+            columns: ["fourthSection"]
+            isOneToOne: false
+            referencedRelation: "ideaSection"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ideas_hero_fkey"
+            columns: ["hero"]
+            isOneToOne: false
+            referencedRelation: "heroes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ideas_secondSection_fkey"
+            columns: ["secondSection"]
+            isOneToOne: false
+            referencedRelation: "ideaSection"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ideas_thirdSection_fkey"
+            columns: ["thirdSection"]
+            isOneToOne: false
+            referencedRelation: "ideaSection"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ideaSection: {
+        Row: {
+          badges: string | null
+          created_at: string
+          description: string | null
+          id: number
+          time_range_end: number | null
+          time_range_start: number | null
+          title: string | null
+        }
+        Insert: {
+          badges?: string | null
+          created_at?: string
+          description?: string | null
+          id?: number
+          time_range_end?: number | null
+          time_range_start?: number | null
+          title?: string | null
+        }
+        Update: {
+          badges?: string | null
+          created_at?: string
+          description?: string | null
+          id?: number
+          time_range_end?: number | null
+          time_range_start?: number | null
+          title?: string | null
         }
         Relationships: []
       }
@@ -49,7 +158,6 @@ export type Database = {
           id: string
           updated_at: string | null
           username: string | null
-          website: string | null
         }
         Insert: {
           avatar_url?: string | null
@@ -57,7 +165,6 @@ export type Database = {
           id: string
           updated_at?: string | null
           username?: string | null
-          website?: string | null
         }
         Update: {
           avatar_url?: string | null
@@ -65,17 +172,8 @@ export type Database = {
           id?: string
           updated_at?: string | null
           username?: string | null
-          website?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "profiles_id_fkey"
-            columns: ["id"]
-            isOneToOne: true
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
     }
     Views: {
@@ -173,4 +271,19 @@ export type Enums<
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof PublicSchema["CompositeTypes"]
+    | { schema: keyof Database },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof Database
+  }
+    ? keyof Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
+    ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never
