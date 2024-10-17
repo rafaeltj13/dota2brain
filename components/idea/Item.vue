@@ -22,13 +22,13 @@ defineProps({
 <template>
   <ClientOnly>
     <div
-      class="rounded-xl hover:bg-primary hover:-translate-y-2 transition-all hover:cursor-pointer flex items-center justify-between pr-2"
+      class="rounded-xl hover:bg-primary hover:-translate-y-2 transition-all hover:cursor-pointer flex items-center justify-between pr-2 group"
       @click="navigateTo(`/idea/${id}`)"
     >
       <img
         :src="img ?? ''"
         :alt="title ?? ''"
-        class="aspect-video w-40 object-fill lg:rounded-xl mr-4"
+        class="aspect-video w-40 object-fill rounded-xl group-hover:rounded-r-none mr-4 transition-all"
       />
       <div class="w-[80%]">
         <h1 class="text-2xl font-bold truncate w-full" :title="title">
