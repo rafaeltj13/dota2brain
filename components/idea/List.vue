@@ -17,12 +17,12 @@ const getBadges = (idea: IIdea) => {
     .splice(0, 3);
   return badges;
 };
-
-console.log(props.ideas);
 </script>
 
 <template>
-  <div class="col-span-1 gap-6 px-8 lg:px-0 grid grid-cols-3">
+  <div
+    class="gap-6 px-8 lg:px-0 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3"
+  >
     <IdeaItem
       v-for="idea in ideas"
       :key="String(idea.id)"

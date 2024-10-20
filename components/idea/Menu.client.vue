@@ -1,13 +1,19 @@
 <script setup lang="ts">
-defineProps({
-  gameIdeas: {
-    type: Array as () => {
-      title: string;
-      badges: string[];
-      description: string;
-    }[],
+const props = defineProps({
+  idea: {
+    type: Object as () => IIdea,
     required: true,
   },
+});
+
+const gameIdeas = computed(() => {
+  return [
+    props.idea.firstSection,
+    props.idea.secondSection,
+    props.idea.thirdSection,
+    props.idea.fourthSection,
+    props.idea.fifthSection,
+  ].filter((section) => section);
 });
 </script>
 
@@ -36,7 +42,7 @@ defineProps({
         <p class="text-xl">{{ idea.description }}</p>
         <div class="flex gap-2 items-start pt-4">
           <Badge
-            v-for="badge in idea.badges"
+            v-for="badge in idea.badges.split(',')"
             :key="badge"
             variant="secondary"
             >{{ badge }}</Badge
@@ -69,7 +75,7 @@ defineProps({
         <p class="text-3xl">{{ idea.description }}</p>
         <div class="flex gap-2 items-start pt-4">
           <Badge
-            v-for="badge in idea.badges"
+            v-for="badge in idea.badges.split(',')"
             :key="badge"
             variant="secondary"
             >{{ badge }}</Badge

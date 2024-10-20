@@ -35,21 +35,21 @@ defineProps({
         class="aspect-video w-40 object-fill rounded-xl group-hover:rounded-r-none mr-4 transition-all"
       />
       <div class="w-[80%]">
-        <h1 class="text-2xl font-bold truncate w-full" :title="title">
-          {{ title }}
-        </h1>
+        <div class="flex items-center justify-between">
+          <h1 class="text-2xl font-bold truncate w-full" :title="title">
+            {{ title }}
+          </h1>
+          <IdeaUpvotes size="md" :upvotes="upvotes" />
+        </div>
         <div class="flex gap-2 pt-4">
           <Badge
             v-for="tag in badges"
             :key="tag"
-            variant="default"
+            variant="secondary"
             class="shadow-md"
             >{{ tag }}</Badge
           >
         </div>
-      </div>
-      <div class="flex items-center justify-center">
-        <IdeaUpvotes size="md" :upvotes="upvotes" />
       </div>
     </div>
   </ClientOnly>

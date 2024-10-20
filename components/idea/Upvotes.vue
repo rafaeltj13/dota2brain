@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <p :class="['font-bold flex gap-2', size === 'lg' ? 'text-3xl' : 'text-xl']">
+  <p :class="['font-bold flex gap-2', size === 'lg' ? 'text-3xl' : 'text-2xl']">
     {{ upvotes }}
     <Icon
       name="ic:baseline-arrow-upward"

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { Database } from "~/database.types";
-
 const { data, error } = useFetch("/api/idea/list");
 
 const ideas = computed(() => {
@@ -13,7 +11,7 @@ useHead({
 </script>
 
 <template>
-  <div class="bg-background pt-32 max-w-screen-2xl mx-auto">
+  <div class="bg-background pt-32 max-w-screen-2xl mx-auto px-4">
     <h1 class="text-5xl font-bold pb-8" v-motion-fade>Ideas</h1>
     <LayoutLoading v-if="!ideas" />
     <IdeaList

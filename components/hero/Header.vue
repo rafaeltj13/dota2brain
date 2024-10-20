@@ -1,13 +1,12 @@
 <script lang="ts" setup>
 import type { Database } from "~/database.types";
 
-const props = defineProps<{
+const props = defineProps({
   hero: {
-    img: string;
-    name: string;
-    primaryAttr: string;
-  };
-}>();
+    type: Object as () => IHero,
+    required: true,
+  },
+});
 </script>
 
 <template>
