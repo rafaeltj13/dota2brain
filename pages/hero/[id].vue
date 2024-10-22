@@ -3,23 +3,14 @@ const route = useRoute();
 const id = ref(route.params.id);
 const loading = ref(true);
 
-const fetchHero = async () => {
-  const { data } = await useFetch(`/api/hero/${id.value}`);
-  return data.value?.data as IHero;
-};
-
-const fetchHeroIdeas = async () => {
-  const { data } = await useFetch(`/api/idea/hero/${hero.value?.id}`);
-  return data.value?.data.map(
-    (idea) => ({ ...idea, hero: hero.value } as IIdea)
-  ) as IIdea[];
-};
+const { fetchHero } = useHeroes();
+const { fetchHeroIdeas } = useIdeas();
 
 const hero = ref<IHero | null>(null);
 const heroIdeas = ref<IIdea[]>([]);
 
-hero.value = await fetchHero();
-heroIdeas.value = await fetchHeroIdeas();
+hero.value = await fetchHero(id.value as string);
+heroIdeas.value = await fetchHeroIdeas(hero.value);
 loading.value = false;
 
 watch(
@@ -27,8 +18,8 @@ watch(
   async (newId) => {
     id.value = newId;
     loading.value = true;
-    hero.value = await fetchHero();
-    heroIdeas.value = await fetchHeroIdeas();
+    hero.value = await fetchHero(id.value as string);
+    heroIdeas.value = await fetchHeroIdeas(hero.value);
     loading.value = false;
   }
 );
@@ -62,6 +53,7 @@ useHead({
         >
       </div>
     </div>
+    <p class="text-2xl font-bold pt-8">Ideas</p>
     <IdeaList v-if="heroIdeas?.length > 0" :ideas="heroIdeas" />
     <IdeaEmpty v-else />
   </div>

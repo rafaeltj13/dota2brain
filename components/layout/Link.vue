@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <a :href="href" :target="target">
+  <p @click="navigateTo(href)" class="cursor-pointer">
     <slot />
-  </a>
+  </p>
 </template>

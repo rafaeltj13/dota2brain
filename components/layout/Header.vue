@@ -47,17 +47,17 @@ onUnmounted(() => {
     </div>
     <div class="flex items-center justify-end gap-4 w-60">
       <LayoutLink
-        class="hover:text-primary hover:-translate-y-1 transition-all"
+        class="hover:text-primary hover:-translate-y-1 transition-all hover:font-bold"
         href="/idea/search"
         >Ideas</LayoutLink
       >
       <LayoutLink
-        class="hover:text-primary hover:-translate-y-1 transition-all"
+        class="hover:text-primary hover:-translate-y-1 transition-all hover:font-bold"
         href="/hero/search"
         >Heroes</LayoutLink
       >
       <LayoutLink
-        class="hover:text-primary hover:-translate-y-1 transition-all"
+        class="hover:text-primary hover:-translate-y-1 transition-all hover:font-bold"
         href="/about"
         >About</LayoutLink
       >

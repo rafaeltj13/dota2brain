@@ -3,29 +3,13 @@ const route = useRoute();
 const id = ref(route.params.id);
 const loading = ref(true);
 
-const fetchIdea = async () => {
-  const { data, error } = await useFetch(`/api/idea/${id.value}`);
-  if (error.value) {
-    console.error("Error fetching idea:", error.value);
-    return null;
-  }
-  return data.value?.data as IIdea;
-};
-
-const fetchOtherIdeas = async () => {
-  const { data, error } = await useFetch("/api/idea/list");
-  if (error.value) {
-    console.error("Error fetching other ideas:", error.value);
-    return [];
-  }
-  return data.value?.data as IIdea[];
-};
+const { fetchIdea, fetchOtherIdeas } = useIdeas();
 
 const currentIdea = ref<IIdea | null>(null);
 const otherIdeas = ref<IIdea[]>([]);
 
-currentIdea.value = await fetchIdea();
-otherIdeas.value = await fetchOtherIdeas();
+currentIdea.value = await fetchIdea(id.value as string);
+otherIdeas.value = await fetchOtherIdeas(id.value as string);
 loading.value = false;
 
 watch(
@@ -33,8 +17,8 @@ watch(
   async (newId) => {
     id.value = newId;
     loading.value = true;
-    currentIdea.value = await fetchIdea();
-    otherIdeas.value = await fetchOtherIdeas();
+    currentIdea.value = await fetchIdea(id.value as string);
+    otherIdeas.value = await fetchOtherIdeas(id.value as string);
     loading.value = false;
   }
 );

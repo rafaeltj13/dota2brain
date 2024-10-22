@@ -29,7 +29,8 @@ const gameIdeas = computed(() => {
         :key="idea.title"
         :value="idea.title"
       >
-        {{ idea.title }}
+        {{ idea.title }} - {{ idea.time_range_start }} to
+        {{ idea.time_range_end }} min
       </TabsTrigger>
     </TabsList>
     <TabsContent
@@ -38,7 +39,10 @@ const gameIdeas = computed(() => {
       :value="idea.title"
     >
       <div class="flex flex-col gap-4 pt-8" v-motion-slide-right>
-        <p class="text-3xl font-bold pb-4">{{ idea.title }}</p>
+        <p class="text-3xl font-bold pb-4">
+          {{ idea.title }} - {{ idea.time_range_start }} to
+          {{ idea.time_range_end }} min
+        </p>
         <p class="text-xl">{{ idea.description }}</p>
         <div class="flex gap-2 items-start pt-4">
           <Badge
