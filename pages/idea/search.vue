@@ -11,7 +11,7 @@ useHead({
 </script>
 
 <template>
-  <div class="bg-background pt-32 max-w-screen-2xl mx-auto px-4">
+  <div class="bg-background pt-32 max-w-screen-2xl mx-auto xl:px-0 px-8">
     <h1 class="text-5xl font-bold pb-8" v-motion-fade>Ideas</h1>
     <LayoutLoading v-if="!ideas" />
     <IdeaList

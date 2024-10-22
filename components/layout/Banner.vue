@@ -1,7 +1,7 @@
 <template>
   <div
     style="background-image: url('/dark-bg.png')"
-    class="w-full h-[60rem] bg-cover bg-center"
+    class="w-full h-[60rem] bg-cover bg-center px-8"
   >
     <div
       class="max-w-screen-2xl h-full mx-auto text-center flex flex-col items-center justify-center"

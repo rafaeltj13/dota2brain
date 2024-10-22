@@ -16,12 +16,11 @@ onUnmounted(() => {
 
 <template>
   <div
-    class="z-50 fixed flex bg-background items-center justify-between rounded-xl lg:w-full max-w-screen-2xl h-16 mx-4 lg:mx-auto top-2 left-0 right-0 border-0 px-4"
+    class="z-50 fixed flex bg-background items-center justify-between rounded-xl w-[95%] xl:w-full max-w-screen-2xl h-16 mx-auto top-2 left-0 right-0 border-0"
     :class="{
-      'shadow-xl !border !opacity-90 z-50 transition-all duration-200 px-6 bg-background':
+      'shadow-xl !border !opacity-90 transition-all duration-200 px-4 bg-background xl:w-full':
         !isScrollAtTop,
-      'opacity-100 z-50 transition-all duration-200 bg-transparent':
-        isScrollAtTop,
+      'opacity-100 transition-all duration-200 bg-transparent': isScrollAtTop,
     }"
   >
     <div

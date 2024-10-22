@@ -1,75 +1,39 @@
 <script setup lang="ts">
-import type { Database } from "~/database.types";
+const route = useRoute();
+const id = ref(route.params.id);
+const loading = ref(true);
 
-const { id } = useRoute().params;
+const fetchHero = async () => {
+  const { data } = await useFetch(`/api/hero/${id.value}`);
+  return data.value?.data as IHero;
+};
 
-const { data, error } = useFetch(`/api/hero/${id}`);
+const fetchHeroIdeas = async () => {
+  const { data } = await useFetch(`/api/idea/hero/${hero.value?.id}`);
+  return data.value?.data.map(
+    (idea) => ({ ...idea, hero: hero.value } as IIdea)
+  ) as IIdea[];
+};
 
-const pageTitle = computed(() => `${hero.value.name} - Ideas`);
-const hero = computed(() => {
-  const currentHero = data.value?.data as
-    | Database["public"]["Tables"]["heroes"]["Row"]
-    | null;
+const hero = ref<IHero | null>(null);
+const heroIdeas = ref<IIdea[]>([]);
 
-  return {
-    name: currentHero?.name || "Unknown Hero",
-    img: currentHero?.img || "",
-    primaryAttr: currentHero?.primaryAttr || "",
-    roles: currentHero?.roles || "",
-  };
-});
+hero.value = await fetchHero();
+heroIdeas.value = await fetchHeroIdeas();
+loading.value = false;
 
-const ideas = computed(() => [
-  {
-    id: 1,
-    title: "PL RUSH AGHS",
-    tags: ["PL RUSH", "AGHS"],
-    img: hero.value.img ?? "",
-  },
-  {
-    id: 2,
-    title: "Farm farm farm",
-    tags: ["Farm"],
-    img: hero.value.img ?? "",
-  },
-  {
-    id: 3,
-    title: "Late game menace",
-    tags: ["Late game", "Menace"],
-    img: hero.value.img ?? "",
-  },
-  {
-    id: 4,
-    title: "Safe lane",
-    tags: ["Safe lane"],
-    img: hero.value.img ?? "",
-  },
-  {
-    id: 5,
-    title: "Mid lane bully",
-    tags: ["Mid lane", "Bully"],
-    img: hero.value.img ?? "",
-  },
-  {
-    id: 6,
-    title: "Active vs passive",
-    tags: ["Active vs passive"],
-    img: hero.value.img ?? "",
-  },
-  {
-    id: 7,
-    title: "Dispel",
-    tags: ["Dispel"],
-    img: hero.value.img ?? "",
-  },
-  {
-    id: 8,
-    title: "EZ Win",
-    tags: ["EZ Win"],
-    img: hero.value.img ?? "",
-  },
-]);
+watch(
+  () => route.params.id,
+  async (newId) => {
+    id.value = newId;
+    loading.value = true;
+    hero.value = await fetchHero();
+    heroIdeas.value = await fetchHeroIdeas();
+    loading.value = false;
+  }
+);
 
+const pageTitle = computed(() => `${hero.value?.name} - Ideas`);
 useHead({
   title: pageTitle || "Ideas",
 });
@@ -77,11 +41,17 @@ useHead({
 
 <template>
   <div
-    v-if="hero"
-    class="bg-background max-w-screen-2xl mx-auto grid gap-8 pt-32 pb-20"
+    v-if="loading"
+    class="pt-32 max-w-screen-2xl mx-auto w-full flex items-center justify-center px-8 xl:px-0"
+  >
+    <LayoutLoading />
+  </div>
+  <div
+    v-else
+    class="bg-background max-w-screen-2xl mx-auto grid gap-8 pt-32 pb-20 px-8 xl:px-0"
     v-motion-slide-bottom
   >
-    <div class="col-span-1 gap-6">
+    <div class="col-span-1 gap-6" v-if="hero">
       <HeroHeader :hero="hero" />
       <div class="flex gap-2">
         <Badge
@@ -92,7 +62,7 @@ useHead({
         >
       </div>
     </div>
-    <IdeaList v-if="ideas.length > 0" :ideas="ideas" />
+    <IdeaList v-if="heroIdeas?.length > 0" :ideas="heroIdeas" />
     <IdeaEmpty v-else />
   </div>
 </template>

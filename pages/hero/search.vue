@@ -17,7 +17,7 @@ useHead({
 </script>
 
 <template>
-  <div class="bg-background pt-32 max-w-screen-2xl mx-auto px-4">
+  <div class="bg-background pt-32 max-w-screen-2xl mx-auto xl:px-0 px-8">
     <h1 class="text-5xl font-bold pb-8" v-motion-fade>Heroes</h1>
     <div class="gap-8 grid grid-cols-5" v-motion-slide-bottom>
       <HeroCard

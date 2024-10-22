@@ -13,15 +13,16 @@ export default defineEventHandler(async (event) => {
       .from('heroes')
       .select('*')
       .eq('id', heroId)
+      .returns<IHero>()
       .single()
     
     if (error) {
       throw error
     }
     
-    return { data: { ...hero } as Database['public']['Tables']['heroes']['Row'], error: null }
+    return { data: hero as IHero, error: null }
   } catch (error) {
     console.error('Error fetching hero data:', error)
-    return { data: { name: "Unknown Hero" }, error: 'Failed to fetch hero data' }
+    return { data: null, error: 'Failed to fetch hero data' }
   }
 })

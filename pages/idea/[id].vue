@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
-
 const route = useRoute();
 const id = ref(route.params.id);
 const loading = ref(true);
@@ -57,11 +55,11 @@ useHead({
 <template>
   <div
     v-if="loading"
-    class="pt-32 max-w-screen-2xl mx-auto w-full flex items-center justify-center px-4"
+    class="pt-32 max-w-screen-2xl mx-auto w-full flex items-center justify-center px-8 xl:px-0"
   >
     <LayoutLoading />
   </div>
-  <div v-else v-motion-slide-bottom class="px-4">
+  <div v-else v-motion-slide-bottom class="px-8">
     <div
       class="bg-background max-w-screen-2xl mx-auto gap-8 pt-32 pb-20"
       v-if="currentIdea && hero"

@@ -6,12 +6,12 @@ export default defineEventHandler(async (event) => {
     const { data: heroes, error } = await useSupabase()
       .from('heroes')
       .select('*')
-    
+      .returns<IHero[]>()
     if (error) {
       throw error
     }
     
-    return { data: heroes as Database['public']['Tables']['heroes']['Row'][], error: null }
+    return { data: heroes, error: null }
   } catch (error) {
     console.error('Error fetching hero data:', error)
     return { data: [], error: 'Failed to fetch hero data' }
