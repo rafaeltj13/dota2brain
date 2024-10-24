@@ -23,6 +23,9 @@ importers:
       '@supabase/supabase-js':
         specifier: ^2.45.4
         version: 2.45.4
+      '@vueuse/core':
+        specifier: ^11.1.0
+        version: 11.1.0(vue@3.5.4(typescript@5.6.2))
       '@vueuse/motion':
         specifier: ^2.2.6
         version: 2.2.6(magicast@0.3.5)(rollup@4.21.3)(vue@3.5.4(typescript@5.6.2))
@@ -50,6 +53,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.11)
+      vaul-vue:
+        specifier: ^0.2.0
+        version: 0.2.0(radix-vue@1.9.5(vue@3.5.4(typescript@5.6.2)))(vue@3.5.4(typescript@5.6.2))
       vue:
         specifier: latest
         version: 3.5.4(typescript@5.6.2)
@@ -1253,8 +1259,14 @@ packages:
   '@vueuse/core@10.11.1':
     resolution: {integrity: sha512-guoy26JQktXPcz+0n3GukWIy/JDNKti9v6VEMu6kV2sYBsWuGiTU8OWdg+ADfUbHg3/3DlqySDe7JmdHrktiww==}
 
+  '@vueuse/core@11.1.0':
+    resolution: {integrity: sha512-P6dk79QYA6sKQnghrUz/1tHi0n9mrb/iO1WTMk/ElLmTyNqgDeSZ3wcDf6fRBGzRJbeG1dxzEOvLENMjr+E3fg==}
+
   '@vueuse/metadata@10.11.1':
     resolution: {integrity: sha512-IGa5FXd003Ug1qAZmyE8wF3sJ81xGLSqTqtQ6jaVfkeZ4i5kS2mwQF61yhVqojRnenVew5PldLyRgvdl4YYuSw==}
+
+  '@vueuse/metadata@11.1.0':
+    resolution: {integrity: sha512-l9Q502TBTaPYGanl1G+hPgd3QX5s4CGnpXriVBR5fEZ/goI6fvDaVmIl3Td8oKFurOxTmbXvBPSsgrd6eu6HYg==}
 
   '@vueuse/motion@2.2.6':
     resolution: {integrity: sha512-gKFktPtrdypSv44SaW1oBJKLBiP6kE5NcoQ6RsAU3InemESdiAutgQncfPe/rhLSLCtL4jTAhMmFfxoR6gm5LQ==}
@@ -1263,6 +1275,9 @@ packages:
 
   '@vueuse/shared@10.11.1':
     resolution: {integrity: sha512-LHpC8711VFZlDaYUXEBbFBCQ7GS3dVU9mjOhhMhXP6txTV4EhYQg/KGnQuvt/sPAtoUKq7VVUnL6mVtFoL42sA==}
+
+  '@vueuse/shared@11.1.0':
+    resolution: {integrity: sha512-YUtIpY122q7osj+zsNMFAfMTubGz0sn5QzE5gPzAIiCmtt2ha3uQUY1+JPyL4gRCTsLPX82Y9brNbo/aqlA91w==}
 
   abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -3559,6 +3574,12 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
+  vaul-vue@0.2.0:
+    resolution: {integrity: sha512-YV0zqxc8NiVzr1z/Awwbaty0UDDchxj5BfhFbLiYu+Uz0rCfSaDK2zwmuXZvejBJKLGbWw9I5GLHJRse14lQew==}
+    peerDependencies:
+      radix-vue: ^1.4.0
+      vue: ^3.3.0
+
   vite-hot-client@0.2.3:
     resolution: {integrity: sha512-rOGAV7rUlUHX89fP2p2v0A2WWvV3QMX2UYq0fRqsWSvFvev4atHWqjwGoKaZT1VTKyLGk533ecu3eyd0o59CAg==}
     peerDependencies:
@@ -5154,7 +5175,19 @@ snapshots:
       - '@vue/composition-api'
       - vue
 
+  '@vueuse/core@11.1.0(vue@3.5.4(typescript@5.6.2))':
+    dependencies:
+      '@types/web-bluetooth': 0.0.20
+      '@vueuse/metadata': 11.1.0
+      '@vueuse/shared': 11.1.0(vue@3.5.4(typescript@5.6.2))
+      vue-demi: 0.14.10(vue@3.5.4(typescript@5.6.2))
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+
   '@vueuse/metadata@10.11.1': {}
+
+  '@vueuse/metadata@11.1.0': {}
 
   '@vueuse/motion@2.2.6(magicast@0.3.5)(rollup@4.21.3)(vue@3.5.4(typescript@5.6.2))':
     dependencies:
@@ -5175,6 +5208,13 @@ snapshots:
       - webpack-sources
 
   '@vueuse/shared@10.11.1(vue@3.5.4(typescript@5.6.2))':
+    dependencies:
+      vue-demi: 0.14.10(vue@3.5.4(typescript@5.6.2))
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+
+  '@vueuse/shared@11.1.0(vue@3.5.4(typescript@5.6.2))':
     dependencies:
       vue-demi: 0.14.10(vue@3.5.4(typescript@5.6.2))
     transitivePeerDependencies:
@@ -7756,6 +7796,14 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   vary@1.1.2: {}
+
+  vaul-vue@0.2.0(radix-vue@1.9.5(vue@3.5.4(typescript@5.6.2)))(vue@3.5.4(typescript@5.6.2)):
+    dependencies:
+      '@vueuse/core': 10.11.1(vue@3.5.4(typescript@5.6.2))
+      radix-vue: 1.9.5(vue@3.5.4(typescript@5.6.2))
+      vue: 3.5.4(typescript@5.6.2)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
 
   vite-hot-client@0.2.3(vite@5.4.4(@types/node@22.5.4)(terser@5.32.0)):
     dependencies:
